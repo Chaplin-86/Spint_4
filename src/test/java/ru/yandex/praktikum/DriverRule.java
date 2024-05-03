@@ -12,28 +12,27 @@ public class DriverRule extends ExternalResource {
 
     @Override
     protected void before() throws Throwable {
-            initDriver();
-        }
+        initDriver();
+    }
 
     @Override
     protected void after() {
         driver.quit();
-        }
+    }
 
 
     public void initDriver() {
-        if("firefox".equals(System.getProperty("browser"))) {
-                initFirefox();
-            }
-        else {
-                initChrome();
-            }
+        if ("firefox".equals(System.getProperty("browser"))) {
+            initFirefox();
+        } else {
+            initChrome();
         }
+    }
 
     private void initFirefox() {
         WebDriverManager.firefoxdriver().setup();
         var opts = new FirefoxOptions()
-                    .configureFromEnv();
+                .configureFromEnv();
         driver = new FirefoxDriver(opts);
     }
 

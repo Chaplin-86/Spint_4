@@ -23,7 +23,7 @@ public class ConfirmOrderPane {
     }
 
 
-    public ConfirmOrderPane  clickYesButton() {
+    public ConfirmOrderPane clickYesButton() {
         new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(orderModalPane));
         driver.findElement(yesButton).click();

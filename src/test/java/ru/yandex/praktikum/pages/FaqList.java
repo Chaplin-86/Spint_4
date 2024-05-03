@@ -25,23 +25,23 @@ public class FaqList {
         return this;
     }
 
-    public FaqList acceptCookies() {
-        waitForCookiesFloater();
-        driver.findElement(cookieButton).click();
-        waitForCookiesFloaterToDisappear();
-
-        return this;
-    }
-
-    private void waitForCookiesFloater() {
-        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
-                .until(ExpectedConditions.visibilityOfElementLocated(cookieButton));
-    }
-
-    private void waitForCookiesFloaterToDisappear() {
-        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
-                .until(ExpectedConditions.invisibilityOfElementLocated(cookieButton));
-    }
+//    public FaqList acceptCookies() {
+//        waitForCookiesFloater();
+//        driver.findElement(cookieButton).click();
+//        waitForCookiesFloaterToDisappear();
+//
+//        return this;
+//    }
+//
+//    private void waitForCookiesFloater() {
+//        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
+//                .until(ExpectedConditions.visibilityOfElementLocated(cookieButton));
+//    }
+//
+//    private void waitForCookiesFloaterToDisappear() {
+//        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
+//                .until(ExpectedConditions.invisibilityOfElementLocated(cookieButton));
+//    }
 
     public FaqList clickOnQuestion(String id) {
         driver.findElement(By.id(questionsIdPrefix + id)).click();

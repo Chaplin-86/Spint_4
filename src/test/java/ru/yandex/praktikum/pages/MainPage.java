@@ -20,7 +20,7 @@ public class MainPage {
         this.driver = driver;
     }
 
-    public MainPage waitForHeaderToLoad(){
+    public MainPage waitForHeaderToLoad() {
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOfElementLocated(homeHeader));
 
@@ -35,35 +35,32 @@ public class MainPage {
         return this;
     }
 
-    public MainPage waitForCookiesFloater() {
+    public void waitForCookiesFloater() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(cookieButton));
 
-        return this;
     }
 
-    public MainPage waitForCookiesFloaterToDisappear() {
+    public void waitForCookiesFloaterToDisappear() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.invisibilityOfElementLocated(cookieButton));
 
-        return this;
     }
 
-    public MainPage clickOnOrderButton(String orderButton) {
-       switch (orderButton) {
-           case "Top":
-               driver.findElement(orderButtonTop).click();
-               break;
-           case "Bottom":
-               WebElement element = driver.findElement(orderButtonBottom);
-               ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-               driver.findElement(orderButtonBottom).click();
-               break;
-       }
+    public void clickOnOrderButton(String orderButton) {
+        switch (orderButton) {
+            case "Top":
+                driver.findElement(orderButtonTop).click();
+                break;
+            case "Bottom":
+                WebElement element = driver.findElement(orderButtonBottom);
+                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+                driver.findElement(orderButtonBottom).click();
+                break;
+        }
 
-       return new MainPage(driver);
+        new MainPage(driver);
     }
-
 
 
 }

@@ -12,7 +12,7 @@ import ru.yandex.praktikum.pages.OrderForm;
 import static org.junit.Assert.assertTrue;
 import static ru.yandex.praktikum.EnvConfig.BASE_URL;
 
-@RunWith( Parameterized.class)
+@RunWith( Parameterized.class )
 
 public class OrderTest {
     private final DriverRule driverRule = new DriverRule();
@@ -28,7 +28,6 @@ public class OrderTest {
     private final String comment;
 
 
-
     public OrderTest(String orderButton, String name, String surname, String address, String stationId, String phoneNumber, String dayNumber, String rentTerm, String scooterColour, String comment) {
         this.orderButton = orderButton;
         this.name = name;
@@ -42,11 +41,11 @@ public class OrderTest {
         this.comment = comment;
     }
 
-@Rule
+    @Rule
     public DriverRule driver = new DriverRule();
 
 
-@Parameterized.Parameters
+    @Parameterized.Parameters
     public static Object[][] getData() {
         return new Object[][]{
                 {"Top", "Гарри", "Поттер", "Тисовая улица", "10", "+79152776620", "017", "сутки", "black", "Алохомора"},
@@ -55,11 +54,10 @@ public class OrderTest {
     }
 
 
-
-@Test
+    @Test
     public void orderTest() {
-    WebDriver driver = driverRule.getDriver();
-    driver.get(BASE_URL);
+        WebDriver driver = driverRule.getDriver();
+        driver.get(BASE_URL);
 
         new MainPage(driver)
                 .waitForHeaderToLoad()
@@ -78,11 +76,9 @@ public class OrderTest {
 
         assertTrue("Заказ оформлен", actual);
 
+        new DriverRule()
+                .after();
+
     }
 
-
-@After
-  public void killDriver() {
-        driverRule.getDriver().quit();
-    }
 }

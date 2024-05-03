@@ -26,7 +26,7 @@ public class OrderForm {
         this.driver = driver;
     }
 
-    public OrderForm  waitForOrderFormLoading() {
+    public OrderForm waitForOrderFormLoading() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(orderFormHeading));
 
@@ -57,7 +57,7 @@ public class OrderForm {
 
     public OrderForm pickMetroStation(String stationId) {
         driver.findElement(metroStationField).click();
-        driver.findElement(By.xpath(".//button[@value=" + stationId + "]" )).click();
+        driver.findElement(By.xpath(".//button[@value=" + stationId + "]")).click();
 
         return this;
     }
@@ -71,7 +71,6 @@ public class OrderForm {
     }
 
 
-
     public OrderForm clickNextButton() {
         driver.findElement(nextButton).click();
 
@@ -80,7 +79,7 @@ public class OrderForm {
     }
 
 
-public OrderForm fillInPersonalInfo(String name, String surname, String address, String stationId, String phoneNumber) {
+    public OrderForm fillInPersonalInfo(String name, String surname, String address, String stationId, String phoneNumber) {
         waitForOrderFormLoading();
         enterName(name);
         enterSurname(surname);
@@ -91,7 +90,6 @@ public OrderForm fillInPersonalInfo(String name, String surname, String address,
 
         return this;
     }
-
 
 
 }

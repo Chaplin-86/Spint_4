@@ -31,7 +31,8 @@ public class AboutRent {
 
         this.driver = driver;
     }
-    public AboutRent  waitForAboutRentPageLoading() {
+
+    public AboutRent waitForAboutRentPageLoading() {
         new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(aboutRentHeading));
 
@@ -40,10 +41,10 @@ public class AboutRent {
 
     public AboutRent enterDate(String dayNumber) {
         driver.findElement(deliveryDateField).click();
-            new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
+        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(calendar));
 
-        driver.findElement(By.xpath(".//div[@class = 'react-datepicker__day react-datepicker__day--"+ dayNumber +"']")).click();
+        driver.findElement(By.xpath(".//div[@class = 'react-datepicker__day react-datepicker__day--" + dayNumber + "']")).click();
 
         return this;
     }
@@ -52,7 +53,7 @@ public class AboutRent {
         driver.findElement(rentTermField).click();
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(dropdownMenu));
-        driver.findElement(By.xpath(".//div[text()='"+ rentTerm +"']")).click();
+        driver.findElement(By.xpath(".//div[text()='" + rentTerm + "']")).click();
 
         return this;
     }
@@ -73,7 +74,6 @@ public class AboutRent {
 
     public AboutRent clickOnOrderButton() {
         driver.findElement(orderButton).click();
-
 
 
         return this;
